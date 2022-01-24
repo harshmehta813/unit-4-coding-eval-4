@@ -1,8 +1,13 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
 import { loginSuccess } from "../redux/auth/action";
 
 function Login() {
   const dispatch = useDispatch();
+  const isAuth = useSelector((state) => state.auth.isAuth);
+  if (isAuth) {
+    return <Redirect to="/dashboard" />;
+  }
 
   const handleAdd = () => {
     const action = loginSuccess(Date.now());

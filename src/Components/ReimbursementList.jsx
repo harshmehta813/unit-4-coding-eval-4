@@ -4,9 +4,7 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import {
   getTodosFailure,
   getTodosRequest,
-  getTodosSuccess,
-  removeTodo,
-  toggleTodo
+  getTodosSuccess
 } from "../redux/app/action";
 import { getTodos } from "./api";
 
@@ -30,7 +28,6 @@ function ReimbursementList() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // getTodos(dispatch);
     dispatch(getTodos());
   }, []);
 
@@ -40,18 +37,18 @@ function ReimbursementList() {
       {isLoading && <h3>Loading...</h3>}
       {isError && <h3> Something went wrong!</h3>}
       <table>
-        <tr>
-          <td>name</td>
-          <td>date</td>
-          <td>purpose</td>
-          <td>amount</td>
-          <td>status</td>
-        </tr>
-        {todos.map((item) => (
-          <tr>
-            <TodoItem key={item.id} {...item} />
-          </tr>
-        ))}
+        <th>Name</th>
+        <th>Date</th>
+        <th>Purpose</th>
+        <th>Amount</th>
+        <th>Status</th>
+        <tbody>
+          {todos.map((item) => (
+            <tr>
+              <TodoItem key={item.id} {...item} />
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   );

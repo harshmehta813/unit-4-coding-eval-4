@@ -8,18 +8,15 @@ import {
 } from "../redux/app/action";
 
 export const getTodos = () => (dispatch) => {
-  // pre fetch
   const requestAction = getTodosRequest();
   dispatch(requestAction);
-  return fetch("https://json-server-mocker-masai.herokuapp.com/tasks")
+  return fetch("https://booking-flights-api.herokuapp.com/ReimbursementList")
     .then((res) => res.json())
     .then((res) => {
-      //success
       const successAction = getTodosSuccess(res);
       dispatch(successAction);
     })
     .catch((res) => {
-      // failure
       const failureAction = getTodosFailure();
       dispatch(failureAction);
     });
@@ -28,7 +25,7 @@ export const getTodos = () => (dispatch) => {
 export const addTodos = ({ name, date, purpose, amount }) => (dispatch) => {
   const requestAction = addTodosRequest();
   dispatch(requestAction);
-  return fetch("https://json-server-mocker-masai.herokuapp.com/tasks", {
+  return fetch("https://booking-flights-api.herokuapp.com/ReimbursementList", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -43,12 +40,10 @@ export const addTodos = ({ name, date, purpose, amount }) => (dispatch) => {
   })
     .then((res) => res.json())
     .then((res) => {
-      //success
       const successAction = addTodosSuccess(res);
       dispatch(successAction);
     })
     .catch((res) => {
-      // failure
       const failureAction = addTodosFailure();
       dispatch(failureAction);
     });
