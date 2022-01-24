@@ -31,7 +31,7 @@ export const getTodos = () => (dispatch) => {
   // pre fetch
   const requestAction = getTodosRequest();
   dispatch(requestAction);
-  return fetch("https://json-server-mocker-masai.herokuapp.com/tasks")
+  return fetch("https://booking-flights-api.herokuapp.com/ReimbursementList")
     .then((res) => res.json())
     .then((res) => {
       //success
@@ -86,7 +86,7 @@ export const addTodo = ({ title, status, id }) => {
 export const addTodos = (text) => (dispatch) => {
   const requestAction = addTodosRequest();
   dispatch(requestAction);
-  return fetch("https://json-server-mocker-masai.herokuapp.com/tasks", {
+  return fetch("https://booking-flights-api.herokuapp.com/ReimbursementList", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"

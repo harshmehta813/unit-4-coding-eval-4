@@ -3,6 +3,7 @@ import Login from "../Login/Login";
 import Admin from "../Components/Admin";
 import { useSelector } from "react-redux";
 import Dashboard from "../Components/Dashboard";
+import RaiseRequest from "../Components/RaiseRequest";
 
 function Routes() {
   const isAuth = useSelector((state) => state.auth.isAuth);
@@ -15,11 +16,11 @@ function Routes() {
         <Route exact path="/login">
           <Login />
         </Route>
-        <Route exact path="/reimbursement/">
+        <Route exact path="/dashboard/">
           <Dashboard />
         </Route>
         <Route exact path="/reimbursement/add">
-          <Dashboard />
+          <RaiseRequest />
         </Route>
       </Switch>
     </>

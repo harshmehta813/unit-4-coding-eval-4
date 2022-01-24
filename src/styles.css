@@ -25,13 +25,18 @@ button {
   cursor: pointer;
 }
 table,
+th,
 td {
   border: 1px solid black;
-}
-thead {
-  font-size: 24px;
 }
 table {
   width: 95%;
   border-collapse: collapse;
+  margin: 20px auto;
+}
+form {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin: 20px auto;
 }
