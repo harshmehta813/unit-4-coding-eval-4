@@ -16,6 +16,9 @@ function Routes() {
         <Route exact path="/login">
           <Login />
         </Route>
+        <Route exact path="/">
+          <Login />
+        </Route>
         <Route exact path="/dashboard/">
           <Dashboard />
         </Route>
