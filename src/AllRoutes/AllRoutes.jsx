@@ -1,19 +1,22 @@
 import { Route, Switch } from "react-router-dom";
-import Home from "./Home";
 import Login from "../Login/Login";
+import { useSelector } from "react-redux";
+import InputForm from "../Components/InputForm";
 
 function Routes() {
-  return (
+  const isAuth = useSelector((state) => state.auth.isAuth);
+  return isAuth ? (
     <>
       <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/login">
-          <Login />
-        </Route>
+        <Route path="/dashboard/admin"></Route>
       </Switch>
     </>
+  ) : (
+    <Switch>
+      <Route path="/reimbursement/add">
+        <InputForm />
+      </Route>
+    </Switch>
   );
 }
 
