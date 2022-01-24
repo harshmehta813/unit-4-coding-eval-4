@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 function Navbar() {
   return (
     <nav>
-      <NavLink exact to="/">
+      <NavLink exact to="/dashboard">
         Home
       </NavLink>
       <NavLink exact to="/reimbursement/add">

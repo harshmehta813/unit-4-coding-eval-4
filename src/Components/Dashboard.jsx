@@ -6,6 +6,7 @@ import {
 } from "../redux/app/action";
 import { addTodos, getTodos } from "./api";
 import InputForm from "./InputForm";
+import ReimbursementList from "./ReimbursementList";
 
 function Dashboard() {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ function Dashboard() {
   return (
     <div>
       <InputForm onSubmit={handleAdd} />
+      <ReimbursementList />
     </div>
   );
 }

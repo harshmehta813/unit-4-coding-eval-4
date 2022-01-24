@@ -13,7 +13,10 @@ function Routes() {
     </>
   ) : (
     <Switch>
-      <Route path="/reimbursement/add">
+      <Route exact path="/reimbursement/">
+        <Dashboard />
+      </Route>
+      <Route exact path="/reimbursement/add">
         <Dashboard />
       </Route>
     </Switch>
