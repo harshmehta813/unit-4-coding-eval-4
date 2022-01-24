@@ -1,7 +1,7 @@
 import { Route, Switch } from "react-router-dom";
 import Login from "../Login/Login";
 import { useSelector } from "react-redux";
-import InputForm from "../Components/InputForm";
+import Dashboard from "../Components/Dashboard";
 
 function Routes() {
   const isAuth = useSelector((state) => state.auth.isAuth);
@@ -14,7 +14,7 @@ function Routes() {
   ) : (
     <Switch>
       <Route path="/reimbursement/add">
-        <InputForm />
+        <Dashboard />
       </Route>
     </Switch>
   );

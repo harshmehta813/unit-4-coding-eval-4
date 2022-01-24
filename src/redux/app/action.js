@@ -72,8 +72,6 @@ export const addTodosFailure = () => {
   };
 };
 
-// actionCreators
-// type is mandatory, string
 export const addTodo = ({ title, status, id }) => {
   return {
     type: appConstants.ADD_TODO,
@@ -100,12 +98,10 @@ export const addTodos = (text) => (dispatch) => {
   })
     .then((res) => res.json())
     .then((res) => {
-      //success
       const successAction = addTodosSuccess(res);
       dispatch(successAction);
     })
     .catch((res) => {
-      // failure
       const failureAction = addTodosFailure();
       dispatch(failureAction);
     });

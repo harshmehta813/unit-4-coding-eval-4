@@ -24,26 +24,26 @@ function InputForm({ onSubmit }) {
         <form onSubmit={(e) => onFormSubmit(e)}>
           <input
             placeholder="Name"
-            name=""
-            value="name"
+            name="name"
+            value={state.name}
             onChange={handleInputChange}
           />
           <input
             placeholder="Date of claim/reimbursement"
             name="date"
-            value=""
+            value={state.date}
             onChange={handleInputChange}
           />
           <input
             placeholder="Purpose of the claim"
-            name=""
-            value="purpose"
+            name="purpose"
+            value={state.purpose}
             onChange={handleInputChange}
           />
           <input
             placeholder="Amount to be claimed"
-            name=""
-            value="amount"
+            name="amount"
+            value={state.amount}
             onChange={handleInputChange}
           />
           <input type="submit" value="add" />
