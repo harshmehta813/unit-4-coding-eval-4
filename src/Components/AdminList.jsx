@@ -12,6 +12,7 @@ import { getTodos } from "./api";
 import EditIcon from "@mui/icons-material/Edit";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import Checkbox from "@mui/material/Checkbox";
 import DeleteIcon from "@mui/icons-material/Delete";
 import FormGroup from "@mui/material/FormGroup";
@@ -61,38 +62,11 @@ function TodoItem({
           aria-describedby="modal-modal-description"
         >
           <Box sx={style}>
-            <Box>
-              {id} - {name} - {`${status}`}
-            </Box>
-            <FormGroup sx={{ alignItems: "center", marginTop: 2 }}>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={status}
-                    onChange={() => onToggle(id)}
-                    inputProps={{ "aria-label": "controlled" }}
-                  />
-                }
-                label="Toggle Status"
-                labelPlacement="start"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={true}
-                    icon={<DeleteIcon />}
-                    checkedIcon={<DeleteIcon />}
-                    onChange={() => {
-                      onDelete(id);
-                      handleClose;
-                    }}
-                    inputProps={{ "aria-label": "controlled" }}
-                  />
-                }
-                label="Delete Item"
-                labelPlacement="start"
-              />
-            </FormGroup>
+            <Button variant="outlined">Reject</Button>
+            <Button variant="outlined">In-Progress</Button>
+            <Button variant="outlined" onClick={() => onToggle(id)}>
+              Settled
+            </Button>
           </Box>
         </Modal>
       </td>
