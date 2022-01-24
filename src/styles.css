@@ -41,3 +41,10 @@ form {
   margin: 20px auto;
   justify-content: center;
 }
+.sortButton {
+  display: flex;
+  gap: 0.5rem;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}

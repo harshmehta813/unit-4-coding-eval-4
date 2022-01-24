@@ -30,6 +30,7 @@ function InputForm({ onSubmit }) {
           />
           <input
             placeholder="Date of claim/reimbursement"
+            type="date"
             name="date"
             value={state.date}
             onChange={handleInputChange}

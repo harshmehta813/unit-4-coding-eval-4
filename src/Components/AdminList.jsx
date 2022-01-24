@@ -13,10 +13,6 @@ import EditIcon from "@mui/icons-material/Edit";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Checkbox from "@mui/material/Checkbox";
-import DeleteIcon from "@mui/icons-material/Delete";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
 
 const style = {
   position: "absolute",
@@ -75,6 +71,7 @@ function TodoItem({
 }
 
 function AdminList() {
+  const [sortMethod, setSortMethod] = React.useState(null);
   const { todos, isLoading, isError } = useSelector(
     (state) => state.app,
     shallowEqual
@@ -90,7 +87,9 @@ function AdminList() {
     const action = removeTodo(id);
     dispatch(action);
   };
-
+  const handleSort = (order) => {
+    setSortMethod(order);
+  };
   const handleToggle = (id) => {
     const action = toggleTodo(id);
     dispatch(action);
@@ -102,20 +101,41 @@ function AdminList() {
       {isError && <h3> Something went wrong!</h3>}
       <table>
         <th>Name</th>
-        <th>Date</th>
+        <th>
+          <div className="sortButton">
+            DATE
+            {["asc", "desc"].map((order) => (
+              <button key={order} onClick={() => handleSort(order)}>
+                {order}
+              </button>
+            ))}
+          </div>
+        </th>
         <th>Purpose</th>
         <th>Amount</th>
         <th>Status</th>
-        {todos.map((item) => (
-          <tr>
-            <TodoItem
-              key={item.id}
-              {...item}
-              onDelete={handleDelete}
-              onToggle={handleToggle}
-            />
-          </tr>
-        ))}
+        {todos
+          .sort((a, b) => {
+            if (sortMethod === null) {
+              return 0;
+            }
+            if (sortMethod === "asc") {
+              return new Date(a.date) - new Date(b.date);
+            }
+            if (sortMethod === "desc") {
+              return new Date(b.date) - new Date(a.date);
+            }
+          })
+          .map((item) => (
+            <tr>
+              <TodoItem
+                key={item.id}
+                {...item}
+                onDelete={handleDelete}
+                onToggle={handleToggle}
+              />
+            </tr>
+          ))}
       </table>
     </div>
   );
